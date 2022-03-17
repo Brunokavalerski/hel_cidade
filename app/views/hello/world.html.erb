@@ -1,0 +1,39 @@
+<table>
+<div aling='center'>
+<p><h1>Hello World!</h1></p>
+
+<p>Variável da instancia: <%= @variavel_de_instancia%></p>
+
+<p>Variável do bloco: <%= @variavel_de_bloco%></p>
+
+<p> Minha primeira página no rail funcionou!</p>
+</div>
+<div><p><h1>Eu sei o alfabeto!:</h1>
+<p>
+<%= @alfabeto.to_a.join(',') %>
+</p>
+<p><b>Estrutura:</b><br>
+Chave: <i><%= @estrutura[:chave]%>.</i>
+</p>
+<p><b> Lista de Pessoas:</b><br>
+<% @pessoas.each do |pessoa| %>
+<%= pessoa[:nome]%> tem <%= pessoa[:idade]%> anos! <br>
+<% end %>
+</p>
+</div>
+</table>
+
+
+<style>
+h1 {
+  border-bottom: 2px solid black;;
+  table-layout: fixed;
+  width: 260px;
+} 
+table {
+    border-radius: 10px;
+   border-style: solid;
+  border-width: 2px;
+  border-color: black;
+}
+</style>

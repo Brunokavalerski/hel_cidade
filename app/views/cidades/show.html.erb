@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+<% if flash[:success].present? %>
+<b style="color: green" >
+<%= flash[:success] %>
+</b>
+<% end %>
+<b>Nome:</b> <%= @cidade.nome %>
+<br>
+<b>Estado:</b> <%= @cidade.estado_id %>
+<br>
+<b>Habitantes:</b> <%= @cidade.habitantes %>
+<br>
+
+<b  style="border-style: groove; border-radius: 4px"><%= link_to 'Editar', edit_cidade_path(@cidade) %></b> 
+|||
+<b  style="border-style: groove; border-radius: 4px"><%= link_to 'Voltar', cidades_path %></b>
+
+<style>
+h1 {
+  border-bottom: 2px solid black;;
+  table-layout: fixed;
+  width: 200px;
+}
+table {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+}
+</style>

@@ -1,0 +1,42 @@
+<h1>Lista dos ceps</h1>
+<p id="notice"><%= notice %></p>
+<% if flash[:success].present? %>
+<b style="color: green" >
+<%= flash[:success] %>
+</b>
+<% end %>
+
+<b>Id:</b> <%= @cep.id %>
+<br>
+<b>cep:</b> <%= @cep.cep %>
+<br>
+<b>Logradouro:</b> <%= @cep.logradouro %>
+<br>
+<b>Bairro:</b> <%= @cep.bairro.nome %>
+<br>
+<b>Cidade:</b> <%= @cep.bairro.cidade.nome %>
+<br>
+<b>Estado:</b> <%= @cep.bairro.cidade.estado.nome %>
+<br>
+<b>País:</b> <%= @cep.bairro.cidade.estado.paise.nome %>
+<br>
+
+<table>
+<b style="border-style: groove; border-radius: 4px"><%= link_to 'Editar', edit_cep_path(@cep) %></b> 
+|||
+<b style="border-style: groove; border-radius: 4px"><%= link_to 'Voltar', ceps_path %></b>
+</table>
+
+<style>
+h1 {
+  border-bottom: 2px solid black;;
+  table-layout: fixed;
+  width: 200px;
+}
+table {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+}
+</style>

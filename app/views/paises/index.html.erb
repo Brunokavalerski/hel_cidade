@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Lista de Países</h1>
+
+<table>
+  <tr>
+    <th>Id:</th>
+    <th>Nome:</th>
+  </tr>
+
+<% @paises.each do |paise| %>
+  <tr>
+    <td style="text-align: center;border-style: solid; border: 1px solid black; border-radius: 2px;"><%= paise.id %></td>
+    <td style="text-align: center;border-style: solid; border: 1px solid black; border-radius: 2px;"><%= paise.nome %></td>
+    <td style="border-style: groove; border-radius: 4px"><%= link_to 'Visualizar', paise %></td>
+    <td style="border-style: groove; border-radius: 4px"><%= link_to 'Editar', edit_paise_path(paise) %></td>
+    <td style="border-style: groove; border-radius: 4px"><%= link_to 'Deletar', paise, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br>
+
+<b style="border-style: groove; border-radius: 4px"><%= link_to 'Novo País', new_paise_path %></b>
+
+<style>
+table {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+}
+th {
+  border-radius: 2px;
+  border-style: inset;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+h1 {
+   border-bottom: 2px solid black;
+  table-layout: fixed;
+  width: 210px;
+}
+</style>

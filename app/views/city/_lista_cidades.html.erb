@@ -1,0 +1,30 @@
+<table>
+<tr>
+<th>Nome:</th>
+<th>Estado:</th>
+<th>Habitantes:</th>
+</tr>
+<% city.each do |city| %>
+<tr>
+<td style="text-align: center;border-style: solid; border: 1px solid black; border-radius: 2px;"><%= city[:nome] %></td>
+<td style="text-align: center;border-style: solid; border: 1px solid black; border-radius: 2px;"><%= city[:estado] %></td>
+<td style="text-align: center;border-style: solid; border: 1px solid black; border-radius: 2px;"><%= city[:habitantes] %></td>
+</tr>
+<% end %>
+</table>
+
+<style>
+table {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+}
+th {
+  border-radius: 2px;
+  border-style: inset;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+</style>

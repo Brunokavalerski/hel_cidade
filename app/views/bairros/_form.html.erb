@@ -1,0 +1,42 @@
+<%= form_for(@bairro) do |f| %>
+  <% if @bairro.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bairro.errors.count, "error") %> Não foi possível salvar o Bairro por:</h2>
+
+      <ul>
+      <% @bairro.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<table>
+  <div class="field">
+    <b><%= f.label :id, 'Id:' %></b>
+    <br>
+    <b style="border-style: outset"><%= f.number_field :id, type: :number, required: true %></b>
+  </div>
+  <div class="field">
+    <b><%= f.label :nome, 'Nome:' %></b>
+    <br>
+    <b style="border-style: outset"><%= f.text_field :nome, maxlength: 32, required: true %></b>
+    <br>
+    <b><%= f.label :cidade, 'Cidade:'%></b>
+    <br>
+    <b style="border-style: outset"><%= f.select :cidade_id, options_from_collection_for_select(Cidade.all, :id, :nome, @bairro.cidade_id) %></b>
+  </div>
+  <br>
+  <div class="actions">
+    <b style="border-style: outset"><%= f.submit  value= 'Salvar'%>
+  </div>
+<% end %>
+</table>
+
+<style>
+table {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+}
+</style>

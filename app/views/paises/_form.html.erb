@@ -1,0 +1,38 @@
+<%= form_for(@paise) do |f| %>
+  <% if @paise.errors.any? %>
+    <div id="Não foi possível, verifique os dados.">
+      <h2><%= pluralize(@paise.errors.count, "error") %> Não foi possível salvar o País por:</h2>
+
+      <ul>
+      <% @paise.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<table>
+  <div class="field">
+    <b><%= f.label :id, 'Id:' %></b>
+    <br/>
+    <b style="border-style: outset"><%= f.number_field :id, type: :number, required: true %></b>
+  </div>
+  <div class="field">
+    <b><%= f.label :nome, 'Nome:' %></b>
+    <br>
+    <b style="border-style: outset"><%= f.text_field :nome, maxlength: 32, required: true %></b>
+    <br>
+  </div>
+  <div class="actions">
+    <b style="border-style: outset"><%= f.submit value= 'Salvar' %></b>
+  </div>
+<% end %>
+</table>
+<style>
+
+table {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+}
+</style>

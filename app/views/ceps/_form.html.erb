@@ -1,0 +1,97 @@
+<%= form_for(@cep) do |f| %>
+  <% if @cep.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cep.errors.count, "error") %> Não foi possível salvar o Cep por:</h2>
+
+      <ul>
+      <% @cep.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<table>
+  <div class="field">
+    <b><%= f.label :id, 'Id:' %></b>
+    <br/>
+    <b style="border-style: outset"><%= f.number_field :id, type: :number, required: true  %></b>
+  </div>
+
+  <div class="field">
+    <b><%= f.label :cep, 'Cep:' %></b>
+    <br/>
+    <b style="border-style: outset"><%= f.number_field :cep, type: :number, required: true  %></b>
+  </div>
+
+  <div class="field">
+    <b><%= f.label :logradouro, 'Logradouro:' %></b>
+    <br>
+    <b style="border-style: outset"><%= f.text_field :logradouro, maxlength: 32, required: true %></b>
+    <br>
+  </div>
+
+  <div class="field">
+   <b><%= f.label :bairro_id, 'Bairro' %></b>
+   <br>
+   <% if @cep.new_record? %>
+   <%= f.select :bairro_id, options_from_collection_for_select(Bairro.all, :id, :nome ), include_blank: true %> <!--coleção, value_method, text_method, selected = nil 
+   (Retorna uma string de tags de opção que foram compiladas pela iteração sobre collectione atribuindo o resultado de uma chamada a value_methodcomo o valor da opção e a text_methodcomo o texto da opção.)-->
+   <br>
+   <% else %>
+   <%= f.select :bairro_id, options_from_collection_for_select(@cep.bairro.cidade.bairros, :id, :nome, @cep.bairro_id), include_blank: true %>
+   <br>
+   <% end %>
+</div>
+
+ <div class="field">
+  <b><%= f.label :cidade_id, 'Cidade' %></b>
+  <br>
+  <% if @cep.new_record? %>
+  <%= select_tag :cidade_id, '', include_blank: true %>
+  <br>
+  <% else %>
+  <%= select_tag :cidade_id, options_from_collection_for_select(@cep.bairro.cidade.estado.cidades, :id, :nome, @cep.bairro.cidade_id), include_blank: true %>
+  <br>
+  <% end %>
+ </div>
+
+ <div class="field">
+  <b><%= f.label :estado_id, 'Estado:' %></b>
+  <br>
+  <% if @cep.new_record? %>
+  <%= select_tag :estado_id,' ', include_blank: true %>
+  <br>
+  <% else %>
+  <%= select_tag :estado_id, options_from_collection_for_select(@cep.bairro.cidade.estado.paise.estados, :id, :nome, @cep.bairro.cidade.estado_id), include_blank: true %>
+  <br>
+  <% end %>
+</div>
+
+<div class="field">
+ <b><%= f.label :paise_id, 'Pais' %></b>
+ <br>
+ <% if @cep.new_record? %>
+ <%= select_tag :paise_id, options_from_collection_for_select(Paise.all, :id, :nome), include_blank: true %>
+ <br>
+ <% else %>
+ <%= select_tag :paise_id, options_from_collection_for_select(Paise.all, :id, :nome, @cep.bairro.cidade.estado.paise_id), include_blank:true %>
+ <br>
+ <% end %>
+ </div>
+ <br>
+ 
+ <div class="actions">
+  <b tyle="border-style: outset"><%= f.submit value= 'Salvar' %>
+  </div>
+<% end %>
+</table>
+
+<style>
+table {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+}
+</style>

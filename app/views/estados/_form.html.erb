@@ -1,0 +1,41 @@
+<%= form_for(@estado) do |f| %>
+  <% if @estado.errors.any? %>
+    <div id="Não foi possível, verifique os dados.">
+      <h2><%= pluralize(@estado.errors.count, "error") %>  Não foi possível salvar o Estado por:</h2>
+
+      <ul>
+      <% @estado.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<table>
+<b><%= f.label :nome, 'Nome:' %></b>
+<br>
+<b style="border-style: outset"><%= f.text_field :nome, maxlength: 32, required: true %></b>
+<br>
+<b><%= f.label :siglas, 'Sigla:' %></b>
+<br>
+<b style="border-style: outset"><%= select(:estado, :sigla, ['AC','AL','AP','AM','BA','CE','DF','ES','GO','RS', 'SC', 'PR', 'SP', 'RJ', 'MG'], {include_blank: true}) %></b>
+<br>
+<b><%= f.label :paise, 'País'%></b>
+<br>
+<b style="border-style: outset"><%= f.select :paise_id, options_from_collection_for_select(Paise.all, :id, :nome, @estado.paise_id) %></b>
+<br>
+<br>
+<div class="actions">
+  <b style="border-style: outset"><%= f.submit value= 'Salvar'%>
+  </div>
+<% end %>
+</table>
+
+<style>
+table {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+}
+</style>

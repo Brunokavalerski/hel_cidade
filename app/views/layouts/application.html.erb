@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HellCidade</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+  <body style='margin:1px; background-color:#3f6e39d9;' >
+  <table width='100%' height='100%' style='border-spacing: 15px;' >
+  <tr><td> <%= render :partial => '/layouts/cabecalho' %></td></tr>
+  <tr><td><%= render :partial => '/layouts/menu' %> </td></tr>
+  <tr><td> <div style='background-color:white;matgin:0px 15px 0px 15px; padding;4px; border-radius: 4px;-moz-border-radius: 5px;'>
+    <%= yield %>
+  </td></tr> 
+  <tr><td><%= render :partial => '/layouts/rodape' %></td></tr> 
+  </table>
+  </body>
+</html>

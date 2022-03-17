@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+<% if flash[:success].present? %>
+<b style="color: green" >
+<%= flash[:success] %>
+</b>
+<% end %>
+<table>
+<h1>Lista de Estados</h1>
+<b>Nome</b> <%= @estado.nome %>
+<br>
+<b>Sigla</b> <%= @estado.sigla %>
+<br>
+</table>
+
+<b style="border-style: groove; border-radius: 4px"><%= link_to 'Editar', edit_estado_path(@estado)%></b>
+|||
+<b style="border-style: groove; border-radius: 4px"><%= link_to 'Voltar', estados_path %></b>
+
+<style>
+h1 {
+  border-bottom: 2px solid black;;
+  table-layout: fixed;
+  width: 230px;
+}
+table {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+}
+</style>

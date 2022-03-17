@@ -1,0 +1,48 @@
+
+
+
+<h1>Lista de  Estados</h1>
+<table>
+  <tr>
+    <th>Nome:</th>
+    <th>Sigla:</th>
+    <th>País:</th>
+  </tr>
+
+<% @estados.each do |estado| %>
+  <tr>
+   <td style="border-style: solid; border: 1px solid black; border-radius: 2px;"><%= estado.nome %></td>
+   <td style="text-align: center;border-style: solid; border: 1px solid black; border-radius: 2px;"><%= estado.sigla %></td>
+   <td style="text-align: center;border-style: solid; border: 1px solid black; border-radius: 2px;"><%= estado.paise.try(:nome)%></td>
+   <td style="border-style: groove; border-radius: 4px"><%= link_to 'Visualizar', estado %></td>
+   <td style="border-style: groove; border-radius: 4px"><%= link_to 'Editar', edit_estado_path(estado) %></td>
+   <td style="border-style: groove; border-radius: 4px"><%= link_to 'Deletar', estado, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br>
+
+<b style="border-style: groove; border-radius: 4px"><%= link_to 'Novo Estado', new_estado_path %></b>
+
+<style>
+table {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+}
+th {
+  border-radius: 2px;
+  border-style: inset;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+h1 {
+  border-bottom: 2px solid black;
+  table-layout: fixed;
+  width: 215px;
+}
+</style>
+
+

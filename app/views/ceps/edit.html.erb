@@ -1,0 +1,22 @@
+<h1>Editar cep</h1>
+
+<%= render 'form' %>
+
+<table>
+<b style="border-style: outset"><%= link_to 'Visualizar', @cep %></b> |||
+<b style="border-style: outset"><%= link_to 'Voltar', cep_path %></b>
+</table>
+
+<style>
+h1 {
+  border-bottom: 2px solid black;;
+  table-layout: fixed;
+  width: 170px;
+}
+table {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+}
+</style>

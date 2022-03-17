@@ -1,0 +1,32 @@
+<h1>Lista de Bairro</h1>
+<p id="notice"><%= notice %></p>
+<% if flash[:success].present? %>
+<b style="color: green" >
+<%= flash[:success] %>
+</b>
+<% end %>
+
+<b>Id:</b> <%= @bairro.id %>
+<br>
+<b>Bairro:</b> <%= @bairro.nome %>
+<br>
+
+<table>
+<b style="border-style: groove; border-radius: 4px"><%= link_to 'Editar', edit_bairro_path(@bairro) %></b>
+|||
+<b style="border-style: groove; border-radius: 4px"><%= link_to 'Voltar', bairros_path %></b>
+</table>
+
+<style>
+h1 {
+  border-bottom: 2px solid black;;
+  table-layout: fixed;
+  width: 200px;
+}
+table {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+}
+</style>
